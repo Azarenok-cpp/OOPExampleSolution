@@ -1,6 +1,5 @@
-#pragma once
-#include <iostream>
-using namespace std;
+#include "main.h"
+
 
 class MyClass
 {

@@ -1,57 +1,41 @@
 #include "Student.h"
-
-//void show(Student student) {
-//	cout << "Name: " << student.name << endl;
-//	cout << "Age: " << student.age << endl;
-//	cout << "mark: " << student.mark << endl;
-//	cout << "Alive: " << (student.alive ? "Yes" : "No") << endl;
-//}
-
-void change(Student& student) {
-	student.name = "Vova";
-	student.age = 15;
-	student.mark = 10.0;
-	student.alive = false;
-
-}
+#include "Teacher.h"
 
 int main() {
-	//Student st1, temp;
+	Student* list = nullptr;
 
-	//st1.name = "Bogdan";
-	//st1.age = 14;
-	//st1.mark = 9.5;
-	//st1.alive = true;
-	//
-	//temp = st1;
 
-	//cout << "Before: \n" << st1.getString();
-	//cout << temp.getString();
+	int size;
+	cout << "Number of studemts: ";
+	cin >> size;
 
-	//st1.name = "Vova";
-	////change(st1);
+	list = new Student[size];
 
-	//cout << "After: \n" << st1.getString();
-	//cout << "\n" << temp.getString();
+	cout << "Theur marks:";
+	for (int i = 0; i < size; i++)
+	{
+		cout << "Name: ";
+		cin >> list[i].name;
 
-	Student* st1 = nullptr;
+		cout << "Age: ";
+		cin >> list[i].age;
 
-	st1 = new Student;
+		cout << "AVG mark: ";
+		cin >> list[i].mark;
 
-	st1->name = "Vlad";
-	st1->age = 15;
-	st1->mark = 9.9;
-	st1->alive = true;
+		cout << "Is alive (y/n): ";
+		char ans;
 
-	cout << "Before:\n";
-	cout << st1->getString() << endl;
+		cin >> ans;
 
-	Student* st2 = st1;
+		list[i].mark = tolower(ans) == 'y';
+	}
 
-	st2->name = "Matvey";
+	Teacher teacher;
 
-	cout << "\nAfter:\n";
-	cout << st1->getString() << endl;
+	Student best = teacher.getAllBestStudents(list, size);
+
+	string msg = best.alive ? "Best student is " + best.name : "No best students";
 
 	return 0;
 }

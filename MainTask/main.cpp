@@ -2,40 +2,23 @@
 #include "Teacher.h"
 
 int main() {
-	Student* list = nullptr;
+	/*Student student1;
+	Student student2("Rodion");
+	Student student3("Alex", 16, 8.9, true);
+	Student student4(student3);*/
+
+	Student student1;
+	Student student2{ "Rodion" };
+	Student student3{ "Alex", 16, 8.9, true };
+	Student student4{student3};
 
 
-	int size;
-	cout << "Number of studemts: ";
-	cin >> size;
 
-	list = new Student[size];
+	cout << student1.toString() << endl;
+	cout << student2.toString() << endl;
+	cout << student3.toString() << endl;
+	cout << student4.toString() << endl;
 
-	cout << "Theur marks:";
-	for (int i = 0; i < size; i++)
-	{
-		cout << "Name: ";
-		cin >> list[i].name;
-
-		cout << "Age: ";
-		cin >> list[i].age;
-
-		cout << "AVG mark: ";
-		cin >> list[i].mark;
-
-		cout << "Is alive (y/n): ";
-		char ans;
-
-		cin >> ans;
-
-		list[i].mark = tolower(ans) == 'y';
-	}
-
-	Teacher teacher;
-
-	Student best = teacher.getAllBestStudents(list, size, nullptr);
-
-	string msg = best.alive ? "Best student is " + best.name : "No best students";
 
 
 	return 0;

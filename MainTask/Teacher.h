@@ -3,6 +3,7 @@
 class Teacher {
 private:
 	const int BEST_MARK = 9;
+
 public:
 	int countBestStudents(Student* students, int size) {
 		return 0;
@@ -11,7 +12,7 @@ public:
 	Student getAllBestStudents(Student* students, int size, int* counter) {
 		*counter = countBestStudents(students, size);
 
-		Student* list_of_best = new[*counter]
+		Student* list_of_best = new Student[*counter];
 
 		for (int i = 0; i < size; i++)
 		{
@@ -19,7 +20,9 @@ public:
 				return *(students + i);
 			}
 		}
+
 		Student empty{};
+
 		return empty;
 	}
 

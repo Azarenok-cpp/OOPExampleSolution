@@ -33,9 +33,10 @@ int main() {
 
 	Teacher teacher;
 
-	Student best = teacher.getAllBestStudents(list, size);
+	Student best = teacher.getAllBestStudents(list, size, nullptr);
 
 	string msg = best.alive ? "Best student is " + best.name : "No best students";
+
 
 	return 0;
 }

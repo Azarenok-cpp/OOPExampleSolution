@@ -45,7 +45,7 @@ public:
 		alive = student.alive;
 	}
 
-	//destructor
+	//destructor -- ONLY ONE
 	~Student() {
 		cout << "Destructor" << endl;
 

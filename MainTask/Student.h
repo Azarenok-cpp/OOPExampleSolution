@@ -3,7 +3,8 @@ class Student {
 public:
 	string name;
 	int age;
-	double mark;
+	int* marks;
+	int countMark;
 	bool alive;
 
 	//Default constructor, no arguments constructor
@@ -11,52 +12,86 @@ public:
 		cout << "Default constructor" << endl;
 		name = "Undefined";
 		age = 13;
-		mark = 4.0;
+		marks = nullptr;
+		countMark = 0;
 		alive = true;
 
 	}
 
-	//toString, default, canonic --- must be in every method
-	
+
 	//constructor with arguments, overloaded, with parameters
-	Student(string nm) {
+	Student(string name) : Student(name, 13, 0, true) {
 		cout << "Constructor with arguments" << endl;
-		name = nm;
-		age = 13;
-		mark = 4.0;
-		alive = true;
 	}
+
+
 
 	//canonical constructor 
-	Student(string nm, int a, double m, bool al) {
+	Student(string name, int age, int countMark, bool alive) {
 		cout << "Canonical constructor with arguments" << endl;
-		name = nm;
-		age = a;
-		mark = m;
-		alive = al;
+		this->name = name;
+		this->age = age;
+		this->alive = alive;
+		this->countMark = countMark;
+		marks = new int[countMark];
+		for (int i = 0; i < countMark; i++)
+		{
+			*(marks + i) = 4;
+		}
 	}
 
+
+
 	//copying constructor
-	Student(const Student& student) { //!!! constant link
+	Student(const Student& student) : Student(student.name, student.age, //!!! constant link
+		student.countMark, student.alive)
+	{
 		cout << "Copying constructor with arguments" << endl;
-		name = student.name;
-		age = student.age;
-		mark = student.mark;
-		alive = student.alive;
 	}
+
+
+
 
 	//destructor -- ONLY ONE
 	~Student() {
 		cout << "Destructor" << endl;
-
+		if (marks) {
+			delete[] marks;
+		}
 	}
 
 	string toString() {
 		string s = "Name: " + name;
 		s += ", age: " + to_string(age);
-		s += ", mark: " + to_string(mark);
+		s += ", marks: " + getAllMarks();
 		s += ", alive: ";
 		s += (alive ? "yes" : "no");
 		return s;
+	}
+
+	string getAllMarks() {
+		if (countMark == 0) {
+			return "[]";
+		}
+
+		string s = "";
+		
+		for (int i = 0; i < countMark; i++)
+		{
+			s += to_string(*(marks + i)) + " ";
+		}
+
+		return s;
+	}
+
+	int getMark(int index) {
+		return index < 0 || index > countMark ? 0 : marks[index];
+	}
+
+	void setmark(int index, int mark) {
+		if (index >= 0 && index < countMark 
+			&& marks) {
+			marks[index] = mark;
+		}
 	}
 };

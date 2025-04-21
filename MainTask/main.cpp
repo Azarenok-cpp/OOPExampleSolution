@@ -2,24 +2,13 @@
 #include "Teacher.h"
 
 int main() {
-	/*Student student1;
-	Student student2("Rodion");
-	Student student3("Alex", 16, 8.9, true);
-	Student student4(student3);*/
+	Student st1{ "Alex", 15,10,true };
 
-	Student student1;
-	Student student2{ "Rodion" };
-	Student student3{ "Alex", 16, 8.9, true };
-	Student student4{student3};
+	cout << st1.toString();
 
-
-
-	cout << student1.toString() << endl;
-	cout << student2.toString() << endl;
-	cout << student3.toString() << endl;
-	cout << student4.toString() << endl;
-
-
-
+	for (int i = 0; i < st1.countMark; i++)
+	{
+		cout << st1.getMark(i) << endl;
+	}
 	return 0;
 }

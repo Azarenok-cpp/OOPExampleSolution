@@ -8,27 +8,21 @@ public:
 	bool alive;
 
 	//Default constructor, no arguments constructor
-	Student() {
-		cout << "Default constructor" << endl;
-		name = "Undefined";
-		age = 13;
-		marks = nullptr;
-		countMark = 0;
-		alive = true;
-
+	Student() : Student("no name", 13, 10, true){
+		//cout << "Default constructor" << endl;
 	}
 
 
 	//constructor with arguments, overloaded, with parameters
 	Student(string name) : Student(name, 13, 0, true) {
-		cout << "Constructor with arguments" << endl;
+		//cout << "Constructor with arguments" << endl;
 	}
 
 
 
 	//canonical constructor 
 	Student(string name, int age, int countMark, bool alive) {
-		cout << "Canonical constructor with arguments" << endl;
+		//cout << "Canonical constructor with arguments" << endl;
 		this->name = name;
 		this->age = age;
 		this->alive = alive;
@@ -54,7 +48,7 @@ public:
 
 	//destructor -- ONLY ONE
 	~Student() {
-		cout << "Destructor" << endl;
+		//cout << "Destructor" << endl;
 		if (marks) {
 			delete[] marks;
 		}

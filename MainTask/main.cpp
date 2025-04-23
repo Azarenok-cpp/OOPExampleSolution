@@ -1,14 +1,22 @@
-#include "Student.h"
-#include "Teacher.h"
+#include "Initializer.h"
 
 int main() {
-	Student st1{ "Alex", 15,10,true };
+	int count;
 
-	cout << st1.toString();
+	cout << "Amount of students: ";
+	cin >> count;
 
-	for (int i = 0; i < st1.countMark; i++)
+	Student* list = nullptr;
+
+	Initializer initializer;
+
+	initializer.init(list, count);
+
+	for (int i = 0; i < count; i++)
 	{
-		cout << st1.getMark(i) << endl;
+		cout << list[i].toString() << endl;
 	}
+
+
 	return 0;
 }

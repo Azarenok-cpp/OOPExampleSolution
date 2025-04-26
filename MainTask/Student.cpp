@@ -66,6 +66,17 @@ void Student::setMark(int index, int mark) {
 	}
 }
 
+double Student::getAverageMark() {
+	double sum;
+	for (int i = 0; i < countMark; i++)
+	{
+		sum += marks[i];
+	}
+
+	return countMark ? sum / countMark : 0;
+};
+
+
 string Student::toString() {
 	string s = "Name: " + name;
 	s += ", age: " + to_string(age);

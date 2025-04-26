@@ -34,5 +34,6 @@ public:
 	int getMark(int index);
 	void setMark(int index, int mark);
 
-	string toString()
+	double getAverageMark();
+	string toString();
 };

@@ -1,24 +1,51 @@
 #include "main.h"
 class Student {
-public:
+private:
 	string name;
 	int age;
 	int* marks;
 	int countMark;
 	bool alive;
 
-	//Default constructor, no arguments constructor
-	Student() : Student("no name", 13, 10, true){
-		//cout << "Default constructor" << endl;
+public:
+	string getName() { return name; }
+	void setName(string name) {
+		this->name = name;
 	}
 
+	int getAge() { return age; }
+	void setAge(int age) {
+		if (age >= 13 && age <= 18) {
+			this->age = age;
+		}
+	}
+
+	int getCountMark() { return countMark; } //no setter needed! read-only field
+
+	int* getMarks() { return marks; }
+
+	bool isAlive() { return alive; }
+	void setAlive(bool alive) { this->alive = alive; }
+
+	int getMark(int index) {
+		return index < 0 || index > countMark ? 0 : marks[index];
+	}
+	void setMark(int index, int mark) {
+		if (index >= 0 && index < countMark
+			&& marks) {
+			marks[index] = mark;
+		}
+	}
+
+	//Default constructor, no arguments constructor
+	Student() : Student("no name", 13, 10, true) {
+		//cout << "Default constructor" << endl;
+	}
 
 	//constructor with arguments, overloaded, with parameters
 	Student(string name) : Student(name, 13, 0, true) {
 		//cout << "Constructor with arguments" << endl;
 	}
-
-
 
 	//canonical constructor 
 	Student(string name, int age, int countMark, bool alive) {
@@ -34,17 +61,12 @@ public:
 		}
 	}
 
-
-
 	//copying constructor
 	Student(const Student& student) : Student(student.name, student.age, //!!! constant link
 		student.countMark, student.alive)
 	{
 		cout << "Copying constructor with arguments" << endl;
 	}
-
-
-
 
 	//destructor -- ONLY ONE
 	~Student() {
@@ -53,6 +75,8 @@ public:
 			delete[] marks;
 		}
 	}
+
+
 
 	string toString() {
 		string s = "Name: " + name;
@@ -69,7 +93,7 @@ public:
 		}
 
 		string s = "";
-		
+
 		for (int i = 0; i < countMark; i++)
 		{
 			s += to_string(*(marks + i)) + " ";
@@ -78,14 +102,5 @@ public:
 		return s;
 	}
 
-	int getMark(int index) {
-		return index < 0 || index > countMark ? 0 : marks[index];
-	}
 
-	void setmark(int index, int mark) {
-		if (index >= 0 && index < countMark 
-			&& marks) {
-			marks[index] = mark;
-		}
-	}
 };

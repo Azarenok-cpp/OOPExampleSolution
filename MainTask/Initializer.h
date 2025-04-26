@@ -18,12 +18,12 @@ public:
 
 		for (int i = 0; i < count; i++)
 		{
-			list[i].name = names[rand() % 12];
-			list[i].age = rand() % (maxAge - minAge + 1) + minAge;
+			list[i].setName(names[rand() % 12]);
+			list[i].setAge(rand() % (maxAge - minAge + 1) + minAge);
 
-			for (int j = 0; j < list[i].countMark; j++)
+			for (int j = 0; j < list[i].getCountMark(); j++)
 			{
-				list[i].marks[j] = rand() % (maxMark - minMark + 1) + minMark;
+				list[i].getMarks()[j] = rand() % (maxMark - minMark + 1) + minMark;
 			}
 		}
 	}

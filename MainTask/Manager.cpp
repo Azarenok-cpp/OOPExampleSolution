@@ -1,5 +1,5 @@
 #include "Manager.h"
-Student* Manager::getBeststudents(Student* list, int count1, int* count2) {
+Student* Manager::getBeststudents(Group group) {
 	*count2 = 0;
 	for (int i = 0; i < count1; i++)
 	{
@@ -21,7 +21,7 @@ Student* Manager::getBeststudents(Student* list, int count1, int* count2) {
 
 }
 
-Student* Manager::getWorststudents(Student* list, int count1, int* count2) {
+Student* Manager::getWorststudents(Group group) {
 	*count2 = 0;
 	for (int i = 0; i < count1; i++)
 	{

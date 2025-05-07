@@ -1,7 +1,7 @@
 #include "Initializer.h"
-void Initializer::init(Student*& list, int count) {
-	if (list == nullptr && count > 0) {
-		list = new Student[count];
+void Initializer::init(Group group) {
+	if (group.getCount() == 0) {
+		return;
 	}
 
 	string names[]{ "Yarik", "Ivan", "Matwey", "Vlad","Timofey","Nikita","Bogdan",
@@ -13,14 +13,14 @@ void Initializer::init(Student*& list, int count) {
 	int minAge = 13;
 	int maxAge = 18;
 
-	for (int i = 0; i < count; i++)
+	for (int i = 0; i < group.getCount(); i++)
 	{
-		list[i].setName(names[rand() % 12]);
-		list[i].setAge(rand() % (maxAge - minAge + 1) + minAge);
+		group.getStudent(i).setName(names[rand() % 12]);
+		group.getStudent(i).setAge(rand() % (maxAge - minAge + 1) + minAge);
 
-		for (int j = 0; j < list[i].getCountMark(); j++)
+		for (int j = 0; j < group.getStudent(i).getCountMark(); j++)
 		{
-			list[i].getMarks()[j] = rand() % (maxMark - minMark + 1) + minMark;
+			group.getStudent(i).getMarks()[j] = rand() % (maxMark - minMark + 1) + minMark;
 		}
 	}
 }

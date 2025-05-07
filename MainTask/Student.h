@@ -1,11 +1,11 @@
 #include "main.h"
 class Student {
 private:
-	string name;
-	int age;
-	int* marks;
-	int countMark;
-	bool alive;
+	string	name;
+	int		 age;
+	int*	marks;
+	int		countMark;
+	bool	alive;
 
 	string getAllMarks();
 
